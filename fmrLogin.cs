@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,8 @@ namespace sistemaBanco
 {
     public partial class frmLogin : Form
     {
+        //Variables Globales
+        public DataSet ds;
         public frmLogin()
         {
             InitializeComponent();
@@ -43,6 +46,38 @@ namespace sistemaBanco
                 string clave = ds.Tables[0].Rows[0]["CONTRASENA"].ToString();
                 string perfil = ds.Tables[0].Rows[0]["NOPERFIL"].ToString();
 
+                if (usario == txtUsuario.Text.Trim() && clave == Utilidades.codificar(txtClave.Text.Trim()))
+                {
+                    if (perfil == "1")
+                    {
+                        frmMenu menu = new frmMenu();
+                        menu.Show();
+                        this.Hide();
+                    }
+                    else if (perfil == "2")
+                    {
+                        frmMenu menu = new frmMenu();
+                        menu.reportesToolStripMenuItem.Visible = false;
+                        menu.mantenimientoToolStripMenuItem.Visible = false;
+                        menu.Show();
+                        this.Hide();
+                    }
+                    else if (perfil == "3")
+                    {
+                        frmMenu menu = new frmMenu();
+                        menu.reportesToolStripMenuItem.Visible = false;
+                        menu.mantenimientoToolStripMenuItem.Visible = false;
+                        menu.catalogoDeSucursalesToolStripMenuItem.Visible = false;
+                        menu.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña Incorrecta. Favor verifique..", "Ingreso a Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpiar();
+                }
+
 
             }
             catch (Exception ex)
@@ -51,10 +86,8 @@ namespace sistemaBanco
                 MessageBox.Show("Usuario o contraseña Incorrecta. Favor verifique..", "Ingreso a Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 limpiar();
 
-
-
-
             }
+            
         }
     }
 }

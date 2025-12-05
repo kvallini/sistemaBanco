@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace sistemaBanco
 {
-    public partial class frmSucursales : Form
+    public partial class frmManualUsuario : Form
     {
-        public frmSucursales()
+        public frmManualUsuario()
         {
             InitializeComponent();
         }
 
-        private void frmSucursales_Load(object sender, EventArgs e)
+        private void btnManualUsuario_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\sistemaBanco\ManualUsuario.pdf");
         }
     }
 }

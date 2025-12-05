@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace sistemaBanco
 {
-    public partial class frmMantUsuarios : Form
+    public partial class frmMantSucursales : Form
     {
-        public frmMantUsuarios()
+        public frmMantSucursales()
         {
             InitializeComponent();
         }

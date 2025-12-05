@@ -38,9 +38,17 @@ namespace sistemaBanco
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMantUsuarios usuarios = new frmMantUsuarios();
-            usuarios.MdiParent = this;
+            frmMantUsuario usuarios = new frmMantUsuario();
+            usuarios.MdiParent = this;       
             usuarios.Show();
+        }
+
+        private void manualDeUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManualUsuario manualUsuario = new frmManualUsuario();
+            manualUsuario.MdiParent = this;
+            manualUsuario.Show();
+
         }
     }
 }

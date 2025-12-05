@@ -1,6 +1,6 @@
 ﻿namespace sistemaBanco
 {
-    partial class frmMantUsuarios
+    partial class frmMantUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.lblApellidoI = new System.Windows.Forms.Label();
             this.lblApellidoII = new System.Windows.Forms.Label();
             this.lblConfirmarCOntrasena = new System.Windows.Forms.Label();
-            this.lblInhabilitar = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnConsultar = new System.Windows.Forms.Button();
@@ -50,9 +49,10 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellidoI = new System.Windows.Forms.TextBox();
             this.txtApellidoII = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
             this.txtConfirmar = new System.Windows.Forms.TextBox();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
+            this.ckbEstado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,17 +144,6 @@
             this.lblConfirmarCOntrasena.TabIndex = 7;
             this.lblConfirmarCOntrasena.Text = "Confirmar Contraseña";
             // 
-            // lblInhabilitar
-            // 
-            this.lblInhabilitar.AutoSize = true;
-            this.lblInhabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInhabilitar.Location = new System.Drawing.Point(407, 44);
-            this.lblInhabilitar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInhabilitar.Name = "lblInhabilitar";
-            this.lblInhabilitar.Size = new System.Drawing.Size(126, 15);
-            this.lblInhabilitar.TabIndex = 8;
-            this.lblInhabilitar.Text = "Inhabilitar Usuario";
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(836, 35);
@@ -203,6 +192,7 @@
             this.btnGrabar.TabIndex = 12;
             this.btnGrabar.Text = "&Grabar";
             this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // btnEliminar
             // 
@@ -229,6 +219,7 @@
             this.btnLimpiar.TabIndex = 14;
             this.btnLimpiar.Text = "&Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnSalir
             // 
@@ -294,13 +285,13 @@
             this.txtApellidoII.Size = new System.Drawing.Size(132, 21);
             this.txtApellidoII.TabIndex = 21;
             // 
-            // textBox6
+            // txtContrasena
             // 
-            this.textBox6.Location = new System.Drawing.Point(159, 210);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(132, 21);
-            this.textBox6.TabIndex = 22;
+            this.txtContrasena.Location = new System.Drawing.Point(159, 210);
+            this.txtContrasena.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(132, 21);
+            this.txtContrasena.TabIndex = 22;
             // 
             // txtConfirmar
             // 
@@ -317,15 +308,28 @@
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(121, 23);
             this.cmbPerfil.TabIndex = 24;
+            this.cmbPerfil.SelectionChangeCommitted += new System.EventHandler(this.cmbPerfil_SelectionChangeCommitted);
             // 
-            // frmMantUsuarios
+            // ckbEstado
+            // 
+            this.ckbEstado.AutoSize = true;
+            this.ckbEstado.Location = new System.Drawing.Point(390, 44);
+            this.ckbEstado.Name = "ckbEstado";
+            this.ckbEstado.Size = new System.Drawing.Size(145, 19);
+            this.ckbEstado.TabIndex = 25;
+            this.ckbEstado.Text = "Inhabilitar Usuario";
+            this.ckbEstado.UseVisualStyleBackColor = true;
+            this.ckbEstado.CheckedChanged += new System.EventHandler(this.ckbEstado_CheckedChanged);
+            // 
+            // frmMantUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 741);
+            this.Controls.Add(this.ckbEstado);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.txtConfirmar);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtContrasena);
             this.Controls.Add(this.txtApellidoII);
             this.Controls.Add(this.txtApellidoI);
             this.Controls.Add(this.txtNombre);
@@ -339,7 +343,6 @@
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.lblInhabilitar);
             this.Controls.Add(this.lblConfirmarCOntrasena);
             this.Controls.Add(this.lblApellidoII);
             this.Controls.Add(this.lblApellidoI);
@@ -350,8 +353,9 @@
             this.Controls.Add(this.lblUsuario);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "frmMantUsuarios";
-            this.Text = "frmMantUsuarios";
+            this.Name = "frmMantUsuario";
+            this.Text = "frmMantSucursales";
+            this.Load += new System.EventHandler(this.frmMantUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -368,7 +372,6 @@
         private System.Windows.Forms.Label lblApellidoI;
         private System.Windows.Forms.Label lblApellidoII;
         private System.Windows.Forms.Label lblConfirmarCOntrasena;
-        private System.Windows.Forms.Label lblInhabilitar;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Button btnConsultar;
@@ -382,8 +385,9 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellidoI;
         private System.Windows.Forms.TextBox txtApellidoII;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.TextBox txtConfirmar;
         private System.Windows.Forms.ComboBox cmbPerfil;
+        private System.Windows.Forms.CheckBox ckbEstado;
     }
 }
